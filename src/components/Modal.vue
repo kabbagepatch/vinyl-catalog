@@ -1,0 +1,87 @@
+<script setup lang="ts">
+defineProps<{
+  onClose?: any
+}>()
+
+const modalClick = (e: any) => {
+  e.stopPropagation();
+}
+</script>
+
+<template>
+  <div class="backdrop" @click="onClose">
+    <div class="modal" @click="modalClick">
+      <header class="modal-header">
+        <slot name="header">
+          This is the default title!
+        </slot>
+        <button
+          type="button"
+          class="close-button"
+          @click="onClose"
+        >
+          X
+        </button>
+      </header>
+
+      <section class="modal-body">
+        <slot name="body">
+          This is the default body!
+        </slot>
+      </section>
+
+      <footer class="modal-footer">
+        <slot name="footer">
+          This is the default footer!
+        </slot>
+      </footer>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal {
+  background-color: hsl(28, 58%, 8%);
+  box-shadow: 2px 2px 5px 1px black;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+
+.modal-header, .modal-footer {
+  min-height: 40px;
+  padding: 15px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-footer {
+  justify-content: end;
+}
+
+.close-button {
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 2px;
+}
+
+.modal-body {
+  padding: 0 15px;
+}
+</style>

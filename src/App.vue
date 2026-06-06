@@ -29,7 +29,7 @@ const onLogout = async () => {
     </a>
     
     <div class="icon-buttons" v-if="userLoaded && currentUser">
-      <button v-if="$route.path !== '/'" class="icon-button" @click="$router.back()">
+      <button v-if="$route.path.includes('/add')" class="icon-button" @click="$router.back()">
         <img class="icon" src="./assets/icons/back.png" />
       </button>
       <button class="icon-button" @click="onLogout">
@@ -37,8 +37,10 @@ const onLogout = async () => {
       </button>
     </div>
   </div>
-  <RouterView :key="$route.fullPath" />
-  <PWABadge />
+  <div class="app-content">
+    <RouterView :key="$route.fullPath" />
+    <PWABadge />
+  </div>
   <NavBar />
 </template>
 
@@ -47,8 +49,9 @@ const onLogout = async () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    padding: 0.75rem;
     height: 36px;
+    background-color: hsl(21, 48%, 6%);
   }
 
   .title {

@@ -94,10 +94,7 @@ const deletePlay = async (row: ActivityItem) => {
           <div class="vinyl-disc-name">{{ nowPlaying.album }}</div>
         </div>
         <div class="now-playing-info">
-          <div
-            class="now-playing-album"
-            :style="{ color: nowPlaying.albumColors?.length ? nowPlaying.albumColors[0] : 'white' }"
-          >
+          <div class="now-playing-album" :style="{ color: nowPlaying.albumColors?.length ? nowPlaying.albumColors[0] : 'white' }">
             {{ nowPlaying.album }}
           </div>
           <div class="now-playing-artist">{{ nowPlaying.artist }}</div>

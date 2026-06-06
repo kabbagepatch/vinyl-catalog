@@ -72,7 +72,7 @@ const toggleView = (v : 'tile' | 'list') => {
   .loading {
     padding: 32px 0;
     text-align: center;
-    color: #b3b3b3;
+    color: hsl(33, 25%, 62%);
   }
 
   .album-search {
@@ -83,13 +83,13 @@ const toggleView = (v : 'tile' | 'list') => {
     font-size: 16px;
     border-radius: 20px;
     border: none;
-    background-color: hsl(27, 15%, 19%);
+    background-color: hsl(27, 28%, 20%);
   }
 
   .view-toggle {
     height: 35px;
     padding: 10px 12px;
-    background-color: hsl(27, 15%, 19%);
+    background-color: hsl(27, 28%, 20%);
   }
 
   .icon {
@@ -97,7 +97,7 @@ const toggleView = (v : 'tile' | 'list') => {
   }
 
   .view-toggle.selected {
-    background-color: hsl(27, 15%, 12%);
+    background-color: hsl(27, 28%, 13%);
   }
 
   .view-toggle:nth-of-type(1) {

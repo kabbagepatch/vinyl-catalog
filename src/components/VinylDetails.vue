@@ -13,7 +13,7 @@ onMounted(() => window.scrollTo(0, 0));
 </script>
 
 <template>
-  <section class="vinyl-header" :style="{ background: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '25' : '#3b3b3b75' }" >
+  <section class="vinyl-header" :style="{ background: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '25' : 'hsla(25, 28%, 22%, 0.46)' }" >
     <img class="vinyl-art" v-if="vinyl?.imageUrl" :src="vinyl?.imageUrl" :alt="vinyl?.album" />
     <div class="vinyl-art" v-else />
     <div class="vinyl-details">
@@ -25,7 +25,7 @@ onMounted(() => window.scrollTo(0, 0));
       <div class="published">Disk: {{ vinyl?.discColor }}</div>
     </div>
   </section>
-  <section class="button-container" :style="{ background: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '25' : '#3b3b3b75' }" >
+  <section class="button-container" :style="{ background: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '25' : 'hsla(25, 28%, 22%, 0.46)' }" >
     <button
       v-if="onPlay"
       :style="{ background: vinyl?.albumColors?.length ? vinyl.albumColors[0] : 'white' }"
@@ -131,7 +131,7 @@ onMounted(() => window.scrollTo(0, 0));
   }
 
   .published {
-    color: #b3b3b3
+    color: hsl(33, 25%, 62%)
   }
 
   .tags {
@@ -153,7 +153,6 @@ onMounted(() => window.scrollTo(0, 0));
   }
 
   .track-index {
-    color: #b3b3b3;
     margin-right: 4px;
   }
 </style>

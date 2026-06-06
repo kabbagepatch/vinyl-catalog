@@ -12,7 +12,7 @@ defineProps<{
   <div class="albums">
     <div
       class="album-tile"
-      :style="{ backgroundColor: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '30' : 'rgb(41, 41, 41)' }"
+      :style="{ backgroundColor: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '30' : 'hsl(25, 25%, 18%)' }"
       v-for="vinyl in vinyls"
       @click="$router.push(`/catalog/${vinyl.id}`)"
     >
@@ -41,7 +41,7 @@ defineProps<{
     position: relative;
     width: 105px;
     height: 160px;
-    background-color: rgb(41, 41, 41);
+    background-color: hsl(25, 25%, 18%);
     padding: 6px 8px;
     border-radius: 5px;
     cursor: pointer;
@@ -49,7 +49,7 @@ defineProps<{
   }
 
   .album-tile:hover {
-    box-shadow: 0 0 3px rgb(223, 223, 223), 0 0 2px rgb(167, 167, 167);
+    box-shadow: 0 0 3px hsl(33, 30%, 75%), 0 0 2px hsl(33, 25%, 60%);
   }
 
   .album-art {
@@ -66,7 +66,7 @@ defineProps<{
   }
 
   .artist {
-    color: rgb(190, 190, 190);
+    color: hsl(33, 20%, 72%);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

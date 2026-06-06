@@ -50,7 +50,7 @@ onBeforeUnmount(() => {
         <img class="icon" src="../assets/icons/vinyls.png" />
         <span class="tab-name">Crate</span>
       </div>
-      <div :style="{ width: '410px', background: 'hsl(21, 42%, 11%)' }" />
+      <div :style="{ width: '420px', background: 'hsl(21, 48%, 11%)' }" />
       <div class="add-button-container">
         <button
           :class="'add-button' + ($route.path.includes('/catalog/add') ? ' add-button-selected' : '')"
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
   footer {
-    background-color: hsl(21, 42%, 11%);
+    background-color: hsl(21, 48%, 11%);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
     width: 100%;
     text-align: center;
     padding-top: 10px;
-    background-color: hsl(21, 42%, 11%);
+    background-color: hsl(21, 48%, 11%);
     font-size: 16px;
     display: flex;
     flex-direction: column;
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
   
   .selected {
     font-weight: bold;
-    background-color: hsl(21, 42%, 6%);
+    background-color: hsl(21, 48%, 6%);
     height: 70px;
     margin-top: -10px;
   }
@@ -111,7 +111,7 @@ onBeforeUnmount(() => {
   }
 
   .add-button-container {
-    background-color: hsl(21, 42%, 11%);
+    background-color: hsl(21, 48%, 11%);
     position: fixed;
     right: 0;
     bottom: 0;
@@ -121,7 +121,7 @@ onBeforeUnmount(() => {
   }
 
   .add-button {
-    background-color: hsl(21, 42%, 4%);
+    background-color: hsl(21, 48%, 4%);
     border-radius: 50%;
     width: 85px;
     height: 85px;

@@ -54,7 +54,7 @@ const modalClick = (e: any) => {
 }
 
 .modal {
-  background-color: hsl(28, 58%, 8%);
+  background-color: hsl(25, 45%, 10%);
   box-shadow: 2px 2px 5px 1px black;
   overflow-x: auto;
   display: flex;

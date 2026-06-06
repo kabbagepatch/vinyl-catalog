@@ -74,7 +74,7 @@ const playVinyl = async () => {
   <AddVinylModal v-if="showEditModal && vinyl" @close="showEditModal = false" :selected-vinyl="vinyl" @save-vinyl="updateVinyl" />
   <div v-if="loading" class="loading">Loading...</div>
   <VinylDetails v-if="vinyl" :vinyl="vinyl" :on-play="playVinyl" />
-  <div class="buttons">
+  <div v-if="vinyl" class="buttons">
     <button class="icon-button" @click="favoriteVinyl()">
       <img v-if="vinyl?.favorite" class="icon" src="../assets/icons/heart-filled.png" />
       <img v-else class="icon" src="../assets/icons/heart.png" />
@@ -92,7 +92,7 @@ const playVinyl = async () => {
   .loading {
     padding: 32px 0;
     text-align: center;
-    color: #b3b3b3;
+    color: hsl(33, 25%, 62%);
   }
 
   .buttons {

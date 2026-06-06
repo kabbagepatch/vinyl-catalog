@@ -3,7 +3,7 @@ import type { Vinyl } from '../types';
 
 const props = defineProps<{
   vinyls: Vinyl[],
-  onVinylSelect?: (vinyl: Vinyl) => void,
+  onVinylSelect: (vinyl: Vinyl) => void,
   onAdd?: (vinyl: Vinyl) => void,
 }>()
 
@@ -20,7 +20,7 @@ const addClick = (e: PointerEvent, vinyl: Vinyl) => {
       class="album-item"
       v-for="vinyl in vinyls"
       @click="onVinylSelect(vinyl)"
-      :style="{ backgroundColor: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '30' : 'hsl(27, 15%, 19%)' }"
+      :style="{ backgroundColor: vinyl?.albumColors?.length ? vinyl.albumColors[0] + '30' : 'hsl(27, 28%, 20%)' }"
     >
       <div class="album-info">
         <img v-if="vinyl.imageUrl" class="album-art" :src="vinyl.imageUrl" :alt="vinyl.album">
@@ -45,7 +45,7 @@ const addClick = (e: PointerEvent, vinyl: Vinyl) => {
   }
 
   .album-item {
-    background-color: rgb(41, 41, 41);
+    background-color: hsl(25, 25%, 18%);
     padding: 6px;
     border-radius: 5px;
     display: flex;
@@ -65,7 +65,7 @@ const addClick = (e: PointerEvent, vinyl: Vinyl) => {
   }
 
   .artist {
-    color: rgb(190, 190, 190);
+    color: hsl(33, 20%, 72%);
     font-size: 15px;
   }
 

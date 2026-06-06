@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #ece0d1;
-  background-color: hsl(28, 58%, 8%);
+  background-color: hsl(25, 45%, 10%);
   scrollbar-width: none;
 
   font-synthesis: none;
@@ -16,11 +16,11 @@
 
 a {
   font-weight: 500;
-  color: hsl(237, 100%, 70%);
+  color: hsl(35, 85%, 65%);
   text-decoration: inherit;
 }
 a:hover {
-  color: hsl(237, 86%, 64%);
+  color: hsl(35, 75%, 58%);
 }
 
 body {
@@ -44,7 +44,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: hsl(21, 42%, 4%);
+  background-color: hsl(21, 48%, 4%);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -81,7 +81,7 @@ button:focus-visible {
     background-color: hsl(0, 0%, 100%);
   }
   a:hover {
-    color: hsl(237, 100%, 73%);
+    color: hsl(35, 85%, 45%);
   }
   button {
     background-color: hsl(0, 0%, 98%);

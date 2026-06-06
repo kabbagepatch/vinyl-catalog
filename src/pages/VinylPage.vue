@@ -41,6 +41,7 @@ const favoriteVinyl = async () => {
 const updateVinyl = async (data: Vinyl) => {
   try {
     vinyl.value = await service.updateVinyl(vinylId, data);
+    showEditModal.value = false;
   } catch (e) {
     console.log(e);
   }

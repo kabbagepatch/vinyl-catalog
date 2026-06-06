@@ -45,11 +45,11 @@ export const createVinyl = async (discogsId: string | undefined) => {
     // @ts-ignore
     cache: {
       update: {
-        [CACHE_KEYS.LIST_VINYLS]: (listVinylsCache: CachedStorageValue,vinylResponse: CacheAxiosResponse) => {
-          if (listVinylsCache.state !== 'cached') return 'ignore';
-          listVinylsCache.data.data = [vinylResponse.data].concat(listVinylsCache.data.data);
+        [CACHE_KEYS.LIST_VINYLS]: (cache: CachedStorageValue,vinylResponse: CacheAxiosResponse) => {
+          if (cache.state !== 'cached') return 'ignore';
+          cache.data.data = [vinylResponse.data].concat(cache.data.data);
 
-          return listVinylsCache;
+          return cache;
         }
       }
     }
@@ -87,12 +87,46 @@ export const favoriteVinyl = async (id: string, favorite: boolean): Promise<Viny
 }
 
 export const updateVinyl = async (id: string, data: Vinyl): Promise<Vinyl> => {
-  const response = await service.put(`/vinyls/${id}`, data);
+  const response = await service.put(`/vinyls/${id}`, data, {
+    // @ts-ignore
+    cache: {
+      update: {
+        [CACHE_KEYS.LIST_VINYLS]: (cache: CachedStorageValue) => {
+          if (cache.state !== 'cached') return 'ignore';
+          // @ts-ignore
+          cache.data.data = cache.data.data.map(
+            (v: Vinyl) => v.id === id ? { ...v, ...data } : v
+          );
+
+          return cache;
+        },
+        [CACHE_KEYS.vinyl(id)]: (cache: CachedStorageValue) => {
+          if (cache.state !== 'cached') return 'ignore';
+          // @ts-ignore
+          cache.data.data = { ...cache.data.data, ...data };
+          return cache;
+        },
+      }
+    }
+  });
   return response.data;
 }
 
 export const deleteVinyl = async (id: string) => {
-  return service.delete(`/vinyls/${id}`);
+  return service.delete(`/vinyls/${id}`, {
+    // @ts-ignore
+    cache: {
+      update: {
+        [CACHE_KEYS.LIST_VINYLS]: (cache: CachedStorageValue) => {
+          if (cache.state !== 'cached') return 'ignore';
+          // @ts-ignore
+          cache.data.data = cache.data.data.filter((p: any) => p.id !== id);
+
+          return cache;
+        }
+      }
+    }
+  });
 }
 
 export const searchVinyls = async (term: string) : Promise<DiscogsVinyl[]> => {
@@ -130,11 +164,11 @@ export const playVinyl = async (id: string, data: { sides: number[] }) => {
     // @ts-ignore
     cache: {
       update: {
-        [CACHE_KEYS.LIST_PLAYS]: (listPlaysCache: CachedStorageValue, playResponse: CacheAxiosResponse) => {
-          if (listPlaysCache.state !== 'cached') return 'ignore';
-          listPlaysCache.data.data = [playResponse.data].concat(listPlaysCache.data.data);
+        [CACHE_KEYS.LIST_PLAYS]: (cache: CachedStorageValue, playResponse: CacheAxiosResponse) => {
+          if (cache.state !== 'cached') return 'ignore';
+          cache.data.data = [playResponse.data].concat(cache.data.data);
 
-          return listPlaysCache;
+          return cache;
         }
       }
     }
@@ -142,5 +176,18 @@ export const playVinyl = async (id: string, data: { sides: number[] }) => {
 }
 
 export const deleteVinylPlay = async (vinylId: string, playId: string) => {
-  await service.delete(`/vinyls/${vinylId}/plays/${playId}`);
+  await service.delete(`/vinyls/${vinylId}/plays/${playId}`, {
+    // @ts-ignore
+    cache: {
+      update: {
+        [CACHE_KEYS.LIST_PLAYS]: (cache: CachedStorageValue) => {
+          if (cache.state !== 'cached') return 'ignore';
+          // @ts-ignore
+          cache.data.data = cache.data.data.filter((p: any) => p.playId !== playId);
+
+          return cache;
+        }
+      }
+    }
+  });
 }
